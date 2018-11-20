@@ -1,4 +1,5 @@
 .image {
+    margin: auto;
     max-width: 5em;
     max-height: 4em;
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MoviesIndex from './index';
 import './CSS/Movies.css';
 
 class Movies extends Component {
@@ -9,27 +10,21 @@ class Movies extends Component {
     }
 }
 
-    componentDidMount = async () => {
-        await fetch('http://localhost:4000/movies')
-        .then(res => { return res.json()})
-        .then( data => { 
-        let movies = data.map((movie) => {
-            return(
-            <div className="movie" key={movie._id}>
-                <div className="title"> {movie.title} </div>
-                <img className="image" src={movie.image} />
-            </div>
-            )
-        })
-            this.setState({movies: movies})
-    })
+getMovies = async () => {
+    await fetch('http://localhost:4000/movies')
+    .then(res => res.json())
+    .then(data => {this.setState({movies: data})})
+}
+
+componentDidMount = async () => {
+    await this.getMovies()
 }
     render() {
 
         return(
             <div>
                 <h1>Movies Page works!</h1>
-                {this.state.movies}
+                <MoviesIndex data={this.state.movies} />
             </div>
         );
     }
