@@ -1,5 +1,10 @@
 .image {
     margin: auto;
     max-width: 5em;
-    max-height: 4em;
+    max-height: 10em;
+}
+
+.movie {
+    margin: 1em;
+    align-content: center;
 }

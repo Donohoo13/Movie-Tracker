@@ -7,7 +7,7 @@ export default class MovieIndex extends Component {
         const movies = this.props.data.map(movie => <MovieShort movie={movie}/>)
 
         return(
-            <span>{movies}</span>
+            <span key="{1++}">{movies}</span>
         );
     }
 }

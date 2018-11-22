@@ -33,10 +33,20 @@ addMovie = async (req, res) => {
     send(res, 200, result)
 }
 
+//DELETE a movie from the database
+deleteMovie = async (req, res) => {
+    let result = await Movies.remove({"_id": req.params.id}).then( results => results )
+    // console.log("id:", req.params.id)
+    // console.log ("results", results)
+    // console.log("result:", result)
+    send(res, 200, result)
+}
+
 module.exports = [
     get('/movies', getMovies),
     get('/movies/seen/:seen', getMoviesBySeen),
     get('/movies/title/:title', getMoviesByName),
-    post('/movies', addMovie)
+    post('/movies', addMovie),
+    del('/movies/id/:id', deleteMovie)
 
 ]
